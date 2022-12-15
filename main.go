@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -22,5 +24,7 @@ func main() {
 		return c.SendString("pong")
 	})
 
-	app.Listen(":8000")
+	if err := app.Listen(":8000"); err != nil {
+		log.Fatal(err)
+	}
 }
